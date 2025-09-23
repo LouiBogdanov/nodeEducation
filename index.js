@@ -2,7 +2,9 @@ import express from 'express';
 import cors from 'cors';
 
 import { Router } from 'express';
-import { createPostRouter } from './modules/posts/routes/routes.js';
+import { createAuthRouter } from './modules/auth/routes/routes.js';
+import { createLagerRouter } from './modules/lagers/routes/routes.js';
+import { createDocumentRouter } from './modules/document/routes/routes.js';
 
 const app = express();
 
@@ -14,7 +16,9 @@ app.use(express.urlencoded({ extended: true }));
 function addApiRoutes() {
     const router = Router();
 
-    router.use('/posts', createPostRouter());
+    router.use('/auth', createAuthRouter());
+    router.use('/lagers', createLagerRouter());
+    router.use('/documents', createDocumentRouter());
 
     return router;
 }
