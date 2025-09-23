@@ -1,5 +1,5 @@
 import db from '../../../db/knexConfig.js';
-import { getUserContext } from '../../auth/middleware/auth_middleware.js';
+import { getUserContext } from '../../contexts/auth_context.js';
 import { DOCUMENT_STATUSES } from '../constants/constants.js';
 
 export const createDocument = async (req, res) => {

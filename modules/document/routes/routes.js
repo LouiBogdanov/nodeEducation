@@ -13,7 +13,7 @@ import {
     checkIsDocumentMutable,
     checkLagerAvailability,
     checkLagerCount,
-} from '../document_middleware/document_middleware.js';
+} from '../middleware/document_middleware.js';
 
 export const createDocumentRouter = () => {
     const router = Router();

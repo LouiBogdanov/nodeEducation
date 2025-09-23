@@ -1,18 +1,10 @@
 import db from '../../../db/knexConfig.js';
 import { verifyToken } from '../../../utils/token.js';
-
-let userContext = {
-    id: undefined,
-    name: undefined,
-    surname: undefined,
-    email: undefined,
-};
-
-export const getUserContext = () => userContext;
+import { setUserContext } from '../../contexts/auth_context.js';
 
 export const checkAuth = async (req, res, next) => {
     const { token } = req.headers;
-    userContext = undefined;
+    setUserContext(undefined);
     try {
         const tokenData = verifyToken(token);
 
@@ -27,7 +19,7 @@ export const checkAuth = async (req, res, next) => {
             return res.status(404).json({ message: 'User not found' });
         }
         console.log('User data:', JSON.stringify(user));
-        userContext = user;
+        setUserContext(user);
         next();
     } catch (error) {
         return res.status(400).json({ message: 'userInfo error', error });
