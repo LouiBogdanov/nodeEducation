@@ -66,7 +66,7 @@ export const checkLagerCount = async (req, res, next) => {
     const { lagerId, lagerCount } = req.query;
     try {
         const raw_lager = await db.raw(
-            'select "isWeight" from lagers where id = :lagerId',
+            `select "isWeight" from lagers where id = :lagerId`,
             { lagerId }
         );
         const isWeight = raw_lager?.rows[0].isWeight;
