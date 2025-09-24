@@ -70,6 +70,7 @@ android/app/src/main/assets/index.android.bundle
 # .env
 /env/*
 src/env/*
+.env
 
 .npmrc
 .yarnrc.yml
