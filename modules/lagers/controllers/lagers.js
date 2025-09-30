@@ -7,7 +7,6 @@ export const registerLager = async (req, res) => {
         return res.status(400).json({ message: 'Missing required parameters' });
     }
 
-    console.log('------------registerLager:', fullName, unit, isWeight);
     const insertData = {
         fullName,
         unit,
@@ -22,7 +21,6 @@ export const registerLager = async (req, res) => {
             return res.status(409).json({ message: 'Lager already exist' });
         }
         const newLager = await db('lagers').insert(insertData).returning('*');
-        console.log('-------------newLager:', JSON.stringify(newLager));
         return res.status(201).json({ lager: newLager });
     } catch (error) {
         return res.status(400).json({ message: 'registerLager error', error });
